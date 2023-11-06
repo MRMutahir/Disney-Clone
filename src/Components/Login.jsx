@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Button from "@mui/material/Button";
 // import bg from ""
 function Login() {
   return (
@@ -9,6 +10,12 @@ function Login() {
         <CTA>
           <CtaLogoOne src="\images\download-removebg-preview.png" alt="" />
           <GetAllThere>GET ALL THERE</GetAllThere>
+          <Para>
+            The Walt Disney Company, commonly known as Disney, is an American
+            multinational mass media and entertainment conglomerate that is
+            headquartered at the Walt Disney Studios complex in Burbank,
+          </Para>
+          <CtaLogoTwo src="\images\cta-logo-two.png" />
         </CTA>
       </Content>
     </Container>
@@ -79,7 +86,20 @@ const GetAllThere = styled.button`
   &:hover {
     background-color: transparent !important;
     transform: scale(1.2); /* Scale the element on hover */
-
   }
+`;
+const Para = styled.p`
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 2px;
+  text-align: center;
+`;
+
+const CtaLogoTwo = styled.img`
+  /* margin-bottom: 12px; */
+  max-width: 600px;
+  min-height: 1px;
+  display: block;
 `;
 export default Login;
