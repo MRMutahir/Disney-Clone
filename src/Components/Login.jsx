@@ -1,15 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-
-// import Navbar from "./Navbar";
-// import bg from ""
 function Login() {
-
   return (
     <Container>
       <Content>
         <BGImage />
-        {/* <Navbar /> */}
         <CTA>
           <CtaLogoOne src="\images\download-removebg-preview.png" alt="" />
           <GetAllThere>GET ALL THERE</GetAllThere>
