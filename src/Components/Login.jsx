@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+
 // import Navbar from "./Navbar";
 // import bg from ""
 function Login() {
+
   return (
     <Container>
       <Content>
