@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "@mui/material/Button";
+// import Navbar from "./Navbar";
 // import bg from ""
 function Login() {
   return (
     <Container>
       <Content>
         <BGImage />
+        {/* <Navbar /> */}
         <CTA>
           <CtaLogoOne src="\images\download-removebg-preview.png" alt="" />
           <GetAllThere>GET ALL THERE</GetAllThere>
@@ -94,6 +95,7 @@ const Para = styled.p`
   line-height: 20px;
   letter-spacing: 2px;
   text-align: center;
+  color: hsla(0, 0%, 95.3%, 1);
 `;
 
 const CtaLogoTwo = styled.img`
