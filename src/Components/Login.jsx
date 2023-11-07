@@ -84,6 +84,7 @@ const GetAllThere = styled.button`
   background-color: #279eff !important;
   border: none;
   transition: background-color 0.3s, transform 0.3s; /* Specify transition properties */
+  cursor: pointer;
   &:hover {
     background-color: transparent !important;
     transform: scale(1.2); /* Scale the element on hover */
