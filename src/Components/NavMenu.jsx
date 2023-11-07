@@ -12,6 +12,7 @@ function NavMenu({ userPhoto }) {
         <li>ORIGINALS</li>
         <li>MOVIES</li>
         <li>SERIES</li>
+        <li>SERIES</li>
       </List>
       <Img src={userPhoto} />
     </NavMenuItem>
