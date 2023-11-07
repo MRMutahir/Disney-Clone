@@ -4,15 +4,16 @@ import NavMenu from "./NavMenu";
 import { useDispatch, useSelector } from "react-redux";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../FireBase.js";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import {
   selectUserEmail,
   selectUserName,
   selectUserPhoto,
+  setUserLoginDetails,
 } from "../features/User/UserSlice.js";
 export default function Navbar() {
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
   const username = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
 
@@ -22,9 +23,22 @@ export default function Navbar() {
     try {
       const result = await signInWithPopup(auth, provider);
       console.log(result.user);
+      setUserData("result");
     } catch (error) {
       console.log(error);
     }
+  };
+  const setUserData = (user) => {
+    console.log(user);
+    // user && setBtn(false);
+    // console.log(user, ">>>>>>>>>>>>>>>user");
+    // dispatch(
+    //   setUserLoginDetails({
+    //     name: user.displayName,
+    //     email: user.email,
+    //     photo: user.PhotoURL,
+    //   })
+    // );
   };
 
   return (
@@ -32,7 +46,11 @@ export default function Navbar() {
       <Logo>
         <img src="\images\Disney_Plus_logo.svg.png" alt="DISNEY" />
       </Logo>
-      {Btn ? <SignBtn onClick={googleHandel}>Login </SignBtn> : <NavMenu />}
+      {Btn ? (
+        <SignBtn onClick={googleHandel}>Login </SignBtn>
+      ) : (
+        <NavMenu photo={userPhoto} />
+      )}
     </Nav>
   );
 }

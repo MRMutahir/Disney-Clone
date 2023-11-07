@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-function NavMenu() {
+function NavMenu({ userPhoto }) {
+  console.log(userPhoto);
   return (
     <NavMenuItem>
       <List>
@@ -12,13 +13,17 @@ function NavMenu() {
         <li>MOVIES</li>
         <li>SERIES</li>
       </List>
+      <Img src={userPhoto} />
     </NavMenuItem>
   );
 }
 
 export default NavMenu;
 
-const NavMenuItem = styled.div``;
+const NavMenuItem = styled.div`
+  display: flex;
+  gap: 20px;
+`;
 const List = styled.ul`
   display: flex;
   list-style: none;
@@ -37,4 +42,12 @@ const List = styled.ul`
       letter-spacing: 2px;
     }
   }
+`;
+
+const Img = styled.img`
+  border-radius: 50%;
+  border: 1px solid black;
+  object-fit: cover;
+  height: 50px;
+  width: 50px;
 `;
