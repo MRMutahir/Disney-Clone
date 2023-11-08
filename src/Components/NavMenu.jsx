@@ -1,8 +1,34 @@
-import React from "react";
+import { Button } from "@mui/material";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { getAuth, signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setSignOutState } from "../features/User/UserSlice";
 
 function NavMenu({ photo }) {
-  // console.log(photo);
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const auth = getAuth();
+
+  const setUserLogOut = () => {
+    dispatch(setSignOutState());
+  };
+  const ButtonLogOutHandel = () => {
+    signOut(auth)
+      .then(() => {
+        console.log(">>>>>>>>>>>>auth", auth.currentUser === null);
+        setUserLogOut();
+        navigate("/"); // Use the navigate function here
+        console.log("Sign-out successful");
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log(error);
+      });
+  };
+
   return (
     <NavMenuItem>
       <List>
@@ -14,7 +40,12 @@ function NavMenu({ photo }) {
         <li>SERIES</li>
         <li>SERIES</li>
       </List>
-      <Img src={photo} />
+      <DropDown onClick={() => setDropdownOpen(!isDropdownOpen)}>
+        <Img src={photo} />
+        {isDropdownOpen && (
+          <ButtonLogOut onClick={ButtonLogOutHandel}>LOGOUT</ButtonLogOut>
+        )}
+      </DropDown>
     </NavMenuItem>
   );
 }
@@ -35,7 +66,7 @@ const List = styled.ul`
   white-space: nowrap;
   position: relative;
   color: rgb(249, 249, 249);
-  transition: background-color 0.3s, transform 0.3s; /* Specify transition properties */
+  transition: background-color 0.3s, transform 0.3s;
   cursor: pointer;
   li {
     &:hover {
@@ -51,4 +82,27 @@ const Img = styled.img`
   object-fit: cover;
   height: 50px;
   width: 50px;
+`;
+
+const DropDown = styled.div`
+  position: relative;
+`;
+
+const ButtonLogOut = styled.button`
+  position: absolute;
+  bottom: -50px;
+  left: -10px;
+  cursor: pointer;
+  font: 12px;
+  font-weight: 600;
+  padding: 10px;
+  transition: background-color 0.3s, transform 0.3s; /* Specify transition properties */
+  &:hover {
+    background-color: white !important;
+    transform: scale(1.2); /* Scale the element on hover */
+    color: #279eff;
+  }
+  background-color: #279eff !important;
+  color: white;
+  border-radius: 10px;
 `;

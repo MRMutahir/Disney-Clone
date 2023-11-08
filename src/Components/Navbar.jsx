@@ -4,7 +4,7 @@ import NavMenu from "./NavMenu";
 import { useDispatch, useSelector } from "react-redux";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../FireBase.js";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import {
   selectUserEmail,
   selectUserName,
@@ -31,7 +31,7 @@ export default function Navbar() {
     }
   };
   const setUserData = (user) => {
-    console.log(user,"result>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    console.log(user, "result>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     user && setBtn(false);
     // console.log(user, ">>>>>>>>>>>>>>>user");
     dispatch(
@@ -46,7 +46,7 @@ export default function Navbar() {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
         setUserData(user);
-        navigate('/home'); // Use the navigate function here
+        navigate("/home"); // Use the navigate function here
       }
     });
   }, [username]);
