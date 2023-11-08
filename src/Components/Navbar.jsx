@@ -42,6 +42,9 @@ export default function Navbar() {
       })
     );
   };
+  const LogOut = () => {
+    setBtn(true);
+  };
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
@@ -59,7 +62,7 @@ export default function Navbar() {
       {Btn ? (
         <SignBtn onClick={googleHandel}>Login </SignBtn>
       ) : (
-        <NavMenu photo={userPhoto} />
+        <NavMenu photo={userPhoto} LogOut={LogOut} />
       )}
     </Nav>
   );
