@@ -2,12 +2,14 @@
 import React from "react";
 import styled from "styled-components";
 import ImgSlider from "./ImgSlider";
+import Viewers from "../Components/Viewers";
 // import  HomeBgImage  from "../../public/images/Disney_Plus_logo.svg.png"
 
 function Home() {
   return (
     <Container>
       <ImgSlider />
+      <Viewers />
     </Container>
   );
 }
