@@ -23,22 +23,22 @@ export default function Navbar() {
     try {
       const result = await signInWithPopup(auth, provider);
       console.log(result.user);
-      setUserData("result");
+      setUserData(result.user);
     } catch (error) {
       console.log(error);
     }
   };
   const setUserData = (user) => {
-    console.log(user);
-    // user && setBtn(false);
+    console.log(user,"result>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    user && setBtn(false);
     // console.log(user, ">>>>>>>>>>>>>>>user");
-    // dispatch(
-    //   setUserLoginDetails({
-    //     name: user.displayName,
-    //     email: user.email,
-    //     photo: user.PhotoURL,
-    //   })
-    // );
+    dispatch(
+      setUserLoginDetails({
+        name: user.displayName,
+        email: user.email,
+        photo: user.photoURL,
+      })
+    );
   };
 
   return (
