@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-function NavMenu({ userPhoto }) {
-  console.log(userPhoto);
+function NavMenu({ photo }) {
+  // console.log(photo);
   return (
     <NavMenuItem>
       <List>
@@ -14,7 +14,7 @@ function NavMenu({ userPhoto }) {
         <li>SERIES</li>
         <li>SERIES</li>
       </List>
-      <Img src={userPhoto} />
+      <Img src={photo} />
     </NavMenuItem>
   );
 }

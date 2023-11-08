@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import NavMenu from "./NavMenu";
 import { useDispatch, useSelector } from "react-redux";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../FireBase.js";
-// import { useHistory } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 import {
   selectUserEmail,
   selectUserName,
@@ -13,16 +13,18 @@ import {
 } from "../features/User/UserSlice.js";
 export default function Navbar() {
   const dispatch = useDispatch();
-  // const history = useHistory();
+  const navigate = useNavigate();
+  // console.log(history);
   const username = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
+  // console.log(userPhoto,">>>>>>>>>>>>>>>>>>.userPhoto");
 
   const [Btn, setBtn] = useState(true);
   const googleHandel = async () => {
-    console.log("GoogleHandel");
+    // console.log("GoogleHandel");
     try {
       const result = await signInWithPopup(auth, provider);
-      console.log(result.user);
+      // console.log(result.user);
       setUserData(result.user);
     } catch (error) {
       console.log(error);
@@ -40,6 +42,14 @@ export default function Navbar() {
       })
     );
   };
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        setUserData(user);
+        navigate('/home'); // Use the navigate function here
+      }
+    });
+  }, [username]);
 
   return (
     <Nav>
