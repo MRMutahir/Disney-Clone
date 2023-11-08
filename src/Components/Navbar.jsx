@@ -73,6 +73,7 @@ const Nav = styled.div`
   justify-content: space-between;
   /* justify-content: ; */
   position: fixed;
+  background-color: black;
   top: 0;
   left: 0;
   right: 0;
@@ -81,7 +82,7 @@ const Nav = styled.div`
   padding: 0px 36px;
   letter-spacing: 13px;
   z-index: 3;
-  height: 70px;
+  height: 100px;
 `;
 const Logo = styled.a`
   padding: 0;

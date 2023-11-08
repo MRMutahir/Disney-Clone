@@ -40,7 +40,6 @@ function NavMenu({ photo, LogOut }) {
         <li>ORIGINALS</li>
         <li>MOVIES</li>
         <li>SERIES</li>
-        <li>SERIES</li>
       </List>
       <DropDown onClick={() => setDropdownOpen(!isDropdownOpen)}>
         <Img src={photo} />
@@ -74,6 +73,8 @@ const List = styled.ul`
     &:hover {
       text-decoration: underline;
       letter-spacing: 2px;
+      transition-duration: 500ms;
+
     }
   }
 `;
