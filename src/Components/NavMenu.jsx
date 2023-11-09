@@ -71,7 +71,7 @@ const List = styled.ul`
   cursor: pointer;
   li {
     &:hover {
-      text-decoration: underline;
+      text-decoration: underline; 
       letter-spacing: 2px;
       transition-duration: 500ms;
 
