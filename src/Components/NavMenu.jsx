@@ -67,13 +67,13 @@ const List = styled.ul`
   white-space: nowrap;
   position: relative;
   color: rgb(249, 249, 249);
-  transition: background-color 0.3s, transform 0.3s;
+  /* transition: background-color 0.3s, transform 0.3s; */
   cursor: pointer;
   li {
     &:hover {
       text-decoration: underline; 
       letter-spacing: 2px;
-      transition-duration: 500ms;
+      /* transition-duration: 500ms; */
 
     }
   }

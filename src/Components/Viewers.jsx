@@ -6,30 +6,33 @@ function Viewers() {
     <Container>
       <Wrap>
         <img src="\images\viewers-disney.png" />
-        <video autoPlay={true} loop={true} playsInline={true}>
+        <video autoPlay={true} playsInline={true}>
           <source src="\videos\1564674844-disney.mp4" type="video/mp4" />
         </video>
       </Wrap>
       <Wrap>
-        <video autoPlay={true} loop={true} playsInline={true}>
+        <video autoPlay={true} playsInline={true}>
           <source src="\videos\1564676115-marvel.mp4" type="video/mp4" />
         </video>
         <img src="\images\viewers-marvel.png" />
       </Wrap>
       <Wrap>
-        <video autoPlay={true} loop={true} playsInline={true}>
-          <source src="\videos\1564676296-national-geographic.mp4" type="video/mp4" />
+        <video autoPlay={true} playsInline={true}>
+          <source
+            src="\videos\1564676296-national-geographic.mp4"
+            type="video/mp4"
+          />
         </video>
         <img src="\images\viewers-national.png" />
       </Wrap>
       <Wrap>
-        <video autoPlay={true} loop={true} playsInline={true}>
+        <video autoPlay={true} playsInline={true}>
           <source src="\videos\1564676714-pixar.mp4" type="video/mp4" />
         </video>
         <img src="\images\viewers-pixar.png" />
       </Wrap>
       <Wrap>
-        <video autoPlay={true} loop={true} playsInline={true}>
+        <video autoPlay={true} playsInline={true}>
           <source src="\videos\1608229455-star-wars.mp4" type="video/mp4" />
         </video>
         <img src="\images\viewers-starwars.png" />
@@ -59,6 +62,7 @@ const Wrap = styled.div`
   position: relative;
   transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
   border: 3px solid rgba(249, 249, 249, 0.1);
+  /* position: relative; */
   img {
     height: 100%;
     inset: 0px;
@@ -68,14 +72,32 @@ const Wrap = styled.div`
     position: absolute;
     transition: opacity 500ms ease-in-out 0s;
     z-index: 1;
+    /* bottom: 0;
+    left: 0;
+    right: 0; */
     top: 0;
+    opacity: 1;
     /* transition: 0.3s, transform 0.3s; */
+  }
+  video {
+    height: 100%;
+    width: 100%;
+    /* position: absolute; */
+    top: 0px;
+    opacity: 0;
+    z-index: 0;
+  }
 
-    &:hover {
-      border: 4px solid;
-      border-color: rgba(249, 249, 249, 0.8);
+  &:hover {
+    box-shadow: rgb(0 0 0 / 80%) 0px 40px 58px -16px,
+      rgb(0 0 0 / 72%) 0px 30px 22px -10px;
 
-      /* transform: scale(1.05);   */
+    transform: scale(1.05);
+    border-color: rgba(249, 249, 249, 0.8);
+
+    video {
+      opacity: 1;
+  
     }
   }
 `;

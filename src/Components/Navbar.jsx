@@ -107,7 +107,7 @@ const SignBtn = styled.div`
   font: 12px;
   font-weight: 600;
   margin-left: 60px;
-  transition: background-color 0.3s, transform 0.3s; /* Specify transition properties */
+  transition: background-color 0.3s, transform 0.3s; Specify transition properties
   &:hover {
     background-color: transparent !important;
     transform: scale(1.2); /* Scale the element on hover */
