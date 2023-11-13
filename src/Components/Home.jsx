@@ -3,6 +3,10 @@ import React from "react";
 import styled from "styled-components";
 import ImgSlider from "./ImgSlider";
 import Viewers from "../Components/Viewers";
+import Recommends from "./Recommends";
+import NewDisney from "./NewDisney";
+import Originals from "./Originals";
+import Trending from "./Trending";
 // import  HomeBgImage  from "../../public/images/Disney_Plus_logo.svg.png"
 
 function Home() {
@@ -10,6 +14,10 @@ function Home() {
     <Container>
       <ImgSlider />
       <Viewers />
+      <Recommends />
+      <NewDisney />
+      <Originals/>
+      <Trending/>
     </Container>
   );
 }
