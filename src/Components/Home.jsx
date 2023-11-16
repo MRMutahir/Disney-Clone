@@ -7,17 +7,44 @@ import Recommends from "./Recommends";
 import NewDisney from "./NewDisney";
 import Originals from "./Originals";
 import Trending from "./Trending";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setMovies } from "../features/movie/movieSlice.js";
+import { db } from "../FireBase.js";
+import { collection, getDocs } from "firebase/firestore";
+import { selectUserName } from "../features/User/UserSlice.js";
 // import  HomeBgImage  from "../../public/images/Disney_Plus_logo.svg.png"
 
 function Home() {
+  // console.log(db._databaseId.projectId, ">>>>>>>>collectiondb");
+  let id = db._databaseId.projectId;
+  console.log(id);
+  const dispatch = useDispatch();
+  const username = useSelector(selectUserName);
+  let recommends = [];
+  let newDisney = [];
+  let originals = [];
+  let trendings = [];
+
+  useEffect(() => {
+    async function faq() {
+      const querySnapshot = await getDocs(collection(db, "movie"));
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+      });
+    }
+    faq();
+  }, [username]);
+
   return (
     <Container>
       <ImgSlider />
       <Viewers />
       <Recommends />
       <NewDisney />
-      <Originals/>
-      <Trending/>
+      <Originals />
+      <Trending />
     </Container>
   );
 }

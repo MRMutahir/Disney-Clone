@@ -11,6 +11,8 @@ import {
   selectUserPhoto,
   setUserLoginDetails,
 } from "../features/User/UserSlice.js";
+
+
 export default function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -31,7 +33,7 @@ export default function Navbar() {
     }
   };
   const setUserData = (user) => {
-    console.log(user, "result>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+     // console.log(user, "result>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     user && setBtn(false);
     // console.log(user, ">>>>>>>>>>>>>>>user");
     dispatch(
@@ -50,6 +52,8 @@ export default function Navbar() {
       if (user) {
         setUserData(user);
         navigate("/home"); // Use the navigate function here
+      } else if (!user) {
+        navigate("/");
       }
     });
   }, [username]);
@@ -107,8 +111,8 @@ const SignBtn = styled.div`
   font: 12px;
   font-weight: 600;
   margin-left: 60px;
-  transition: background-color 0.3s, transform 0.3s; Specify transition properties
-  &:hover {
+  transition: background-color 0.3s, transform 0.3s;
+  Specify transition properties &:hover {
     background-color: transparent !important;
     transform: scale(1.2); /* Scale the element on hover */
   }
