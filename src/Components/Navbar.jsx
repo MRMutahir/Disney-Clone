@@ -19,7 +19,7 @@ export default function Navbar() {
   // console.log(history);
   const username = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
-  // console.log(userPhoto,">>>>>>>>>>>>>>>>>>.userPhoto");
+   // console.log(userPhoto,">>>>>>>>>>>>>>>>>>.userPhoto");
 
   const [Btn, setBtn] = useState(true);
   const googleHandel = async () => {

@@ -1,13 +1,18 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { selectRecommend } from "../features/movie/movieSlice";
 
 function Recommends() {
+  const selectRecommends = useSelector(selectRecommend);
+
+  console.log(selectRecommends, ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
   return (
     <ContainerRecommends>
       <h1>Recommends For You</h1>
       <Content>
-        <Wrap>
+        {/* <Wrap>
           <Link to={"/"}>
             <img
               src="https://www.tripsavvy.com/thmb/qV2Ii60OXopoJV1YrVM6MH7ks5Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Disneygang-57bbb6295f9b58cdfdb108ab.jpg"
@@ -38,7 +43,7 @@ function Recommends() {
               alt=""
             />
           </Link>
-        </Wrap>
+        </Wrap> */}
       </Content>
     </ContainerRecommends>
   );
