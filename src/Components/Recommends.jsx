@@ -2,12 +2,12 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { selectRecommend } from "../features/movie/movieSlice";
+import { selectRecommends } from "../features/movie/movieSlice.js";
 
 function Recommends() {
-  const selectRecommends = useSelector(selectRecommend);
+  const movies = useSelector(selectRecommends);
 
-  console.log(selectRecommends, ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+  // console.log(movies)
   return (
     <ContainerRecommends>
       <h1>Recommends For You</h1>

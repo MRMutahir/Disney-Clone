@@ -27,7 +27,7 @@ export default function Navbar() {
     try {
       const result = await signInWithPopup(auth, provider);
       // console.log(result.user);
-      setUserData(result.user);
+       // setUserData(result.user);
     } catch (error) {
       console.log(error);
     }
@@ -64,7 +64,7 @@ export default function Navbar() {
         <img src="\images\Disney_Plus_logo.svg.png" alt="DISNEY" />
       </Logo>
       {Btn ? (
-        <SignBtn onClick={googleHandel}>Login </SignBtn>
+        <SignBtn onClick={googleHandel}>Login</SignBtn>
       ) : (
         <NavMenu photo={userPhoto} LogOut={LogOut} />
       )}

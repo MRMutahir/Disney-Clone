@@ -21,6 +21,7 @@ const userSlice = createSlice({
     },
   },
 });
+// console.log(initialState);
 
 export const { setUserLoginDetails, setSignOutState } = userSlice.actions;
 
@@ -29,3 +30,4 @@ export const selectUserEmail = (state) => state.user.email;
 export const selectUserPhoto = (state) => state.user.photo;
 
 export default userSlice.reducer;
+ // console.log(selectUserName);
