@@ -4,7 +4,8 @@ import NavMenu from "./NavMenu";
 import { useDispatch, useSelector } from "react-redux";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../FireBase.js";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+
 import {
   selectUserPhoto,
   setUserLoginDetails,
@@ -13,7 +14,10 @@ import {
 export default function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const username = useSelector(selectUserName);
+  const location = useLocation(); // Access current location using useLocation hook
+  const currentUrl = location.pathname; // Get the pathname from the location object
+  // console.log(currentUrl, ">>>>>>>>>>>>>currentUrl"); // Log the current URL
+
   const userPhoto = useSelector(selectUserPhoto);
 
   const [Btn, setBtn] = useState(true);
@@ -35,7 +39,10 @@ export default function Navbar() {
   const googleHandel = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
-      console.log(result);
+      // console.log(result);
+      if (result) {
+        localStorage.setItem("accessToken", result.user.accessToken);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -46,10 +53,13 @@ export default function Navbar() {
   };
 
   useEffect(() => {
+    let token = localStorage.getItem("accessToken");
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
-      if (user) {
+      if (token) {
         setUserData(user);
         navigate("/home");
+      } else if (user) {
+        // navigate("/detail/:id/");
       } else {
         navigate("/");
       }

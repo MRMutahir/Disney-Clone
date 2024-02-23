@@ -6,7 +6,7 @@ import { selectTrending } from "../features/movie/movieSlice.js";
 
 function Trending() {
   const movies = useSelector(selectTrending);
-  console.log(movies, "movies selectTrending");
+  // console.log(movies, "movies selectTrending");
 
   return (
     <ContainerRecommends>

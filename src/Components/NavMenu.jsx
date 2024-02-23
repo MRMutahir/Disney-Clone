@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { getAuth, signOut } from "firebase/auth";
@@ -12,7 +11,6 @@ function NavMenu({ photo, LogOut }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const auth = getAuth();
-
   const setUserLogOut = () => {
     dispatch(setSignOutState());
     LogOut();
@@ -71,10 +69,9 @@ const List = styled.ul`
   cursor: pointer;
   li {
     &:hover {
-      text-decoration: underline; 
+      text-decoration: underline;
       letter-spacing: 2px;
       /* transition-duration: 500ms; */
-
     }
   }
 `;

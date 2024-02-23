@@ -6,7 +6,7 @@ import { selectNewDisney } from "../features/movie/movieSlice.js";
 
 function NewDisney() {
   const movies = useSelector(selectNewDisney);
-  console.log(movies, "movies selectNewDisney");
+  // console.log(movies, "movies selectNewDisney");
   return (
     <ContainerRecommends>
       <h1>New Disney For You</h1>

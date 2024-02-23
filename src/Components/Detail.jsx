@@ -14,7 +14,7 @@ const Detail = (props) => {
       const docRef = doc(db, "movie", id);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
+        // console.log("Document data:", docSnap.data());
         setDetailData(docSnap.data());
       } else {
         // docSnap.data() will be undefined in this case

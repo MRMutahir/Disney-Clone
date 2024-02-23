@@ -1,6 +1,6 @@
 import "./App.css";
 import Login from "./Components/Login";
-import { Routes, Route, Router } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
 import Detail from "./Components/Detail";
