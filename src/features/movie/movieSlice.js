@@ -26,4 +26,4 @@ export const selectOriginals = (state) => state.movie.originals;
 export const selectTrending = (state) => state.movie.trending;
 
 export default movieSlice.reducer;
- // console.log(selectRecommend,"selectRecommend>>>>>>>>>>>>>");
+// console.log(selectRecommend,"selectRecommend>>>>>>>>>>>>>");

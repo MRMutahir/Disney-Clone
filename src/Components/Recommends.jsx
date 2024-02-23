@@ -6,44 +6,21 @@ import { selectRecommends } from "../features/movie/movieSlice.js";
 
 function Recommends() {
   const movies = useSelector(selectRecommends);
+  console.log(movies, ">>>>>>>>>>> movies Recommends");
 
   // console.log(movies)
   return (
     <ContainerRecommends>
       <h1>Recommends For You</h1>
       <Content>
-        {/* <Wrap>
-          <Link to={"/"}>
-            <img
-              src="https://www.tripsavvy.com/thmb/qV2Ii60OXopoJV1YrVM6MH7ks5Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Disneygang-57bbb6295f9b58cdfdb108ab.jpg"
-              alt=""
-            />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to={"/"}>
-            <img
-              src="https://www.tripsavvy.com/thmb/qV2Ii60OXopoJV1YrVM6MH7ks5Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Disneygang-57bbb6295f9b58cdfdb108ab.jpg"
-              alt=""
-            />
-          </Link>
-        </Wrap>{" "}
-        <Wrap>
-          <Link to={"/"}>
-            <img
-              src="https://www.tripsavvy.com/thmb/qV2Ii60OXopoJV1YrVM6MH7ks5Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Disneygang-57bbb6295f9b58cdfdb108ab.jpg"
-              alt=""
-            />
-          </Link>
-        </Wrap>{" "}
-        <Wrap>
-          <Link to={"/"}>
-            <img
-              src="https://www.tripsavvy.com/thmb/qV2Ii60OXopoJV1YrVM6MH7ks5Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Disneygang-57bbb6295f9b58cdfdb108ab.jpg"
-              alt=""
-            />
-          </Link>
-        </Wrap> */}
+        {movies &&
+          movies.map((ele, key) => (
+            <Wrap key={key}>
+              <Link to={`/detail/${ele.id}`}>
+                <img src={`${ele.cardImg}`} alt={`${ele.title}`} />
+              </Link>
+            </Wrap>
+          ))}
       </Content>
     </ContainerRecommends>
   );
