@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import styled from "styled-components";
 import NavMenu from "./NavMenu";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,8 +6,6 @@ import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../FireBase.js";
 import { useNavigate } from "react-router-dom";
 import {
-  selectUserEmail,
-  selectUserName,
   selectUserPhoto,
   setUserLoginDetails,
 } from "../features/User/UserSlice.js";
@@ -15,47 +13,50 @@ import {
 export default function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // console.log(history);
-  const username = useSelector(selectUserName);
+  // const username = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
-  // console.log(userPhoto,">>>>>>>>>>>>>>>>>>.userPhoto");
 
   const [Btn, setBtn] = useState(true);
+
+  const setUserData = useCallback(
+    (user) => {
+      user && setBtn(false);
+      dispatch(
+        setUserLoginDetails({
+          name: user.displayName,
+          email: user.email,
+          photo: user.photoURL,
+        })
+      );
+    },
+    [dispatch]
+  );
+
   const googleHandel = async () => {
-    // console.log("GoogleHandel");
     try {
       const result = await signInWithPopup(auth, provider);
       console.log(result);
-      // setUserData(result.user);
     } catch (error) {
       console.log(error);
     }
   };
-  const setUserData = (user) => {
-    // console.log(user, "result>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-    user && setBtn(false);
-    // console.log(user, ">>>>>>>>>>>>>>>user");
-    dispatch(
-      setUserLoginDetails({
-        name: user.displayName,
-        email: user.email,
-        photo: user.photoURL,
-      })
-    );
-  };
+
   const LogOut = () => {
     setBtn(true);
   };
+
   useEffect(() => {
-    auth.onAuthStateChanged(async (user) => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
         setUserData(user);
-        navigate("/home"); // Use the navigate function here
-      } else if (!user) {
+        navigate("/home");
+      } else {
         navigate("/");
       }
     });
-  }, [username]);
+
+    return () => unsubscribe();
+  }, [setUserData, navigate]);
 
   return (
     <Nav>
