@@ -12,28 +12,27 @@ import {
   setUserLoginDetails,
 } from "../features/User/UserSlice.js";
 
-
 export default function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // console.log(history);
   const username = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
-   // console.log(userPhoto,">>>>>>>>>>>>>>>>>>.userPhoto");
+  // console.log(userPhoto,">>>>>>>>>>>>>>>>>>.userPhoto");
 
   const [Btn, setBtn] = useState(true);
   const googleHandel = async () => {
     // console.log("GoogleHandel");
     try {
       const result = await signInWithPopup(auth, provider);
-      // console.log(result.user);
-       // setUserData(result.user);
+      console.log(result);
+      // setUserData(result.user);
     } catch (error) {
       console.log(error);
     }
   };
   const setUserData = (user) => {
-     // console.log(user, "result>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    // console.log(user, "result>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     user && setBtn(false);
     // console.log(user, ">>>>>>>>>>>>>>>user");
     dispatch(

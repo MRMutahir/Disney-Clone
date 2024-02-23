@@ -1,9 +1,9 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Login from "./Components/Login";
 import { Routes, Route, Router } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
+import Detail from "./Components/Detail";
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/detail/:id/" element={<Detail />} />
       </Routes>
     </div>
   );
