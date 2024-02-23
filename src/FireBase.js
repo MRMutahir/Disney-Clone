@@ -1,9 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-// import { getDatabase } from "firebase/database";
-
-// import {  } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyDHZCSKSdGoYNnNyk51rD745c-CxKVAjZI",
   authDomain: "disney-13901.firebaseapp.com",
@@ -18,5 +15,5 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const provider = new GoogleAuthProvider();
-// export const database = getDatabase();
+
 export default app;
