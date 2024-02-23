@@ -6,9 +6,7 @@ import { selectRecommends } from "../features/movie/movieSlice.js";
 
 function Recommends() {
   const movies = useSelector(selectRecommends);
-  console.log(movies, ">>>>>>>>>>> movies Recommends");
-
-  // console.log(movies)
+  // console.log(movies, ">>>>>>>>>>> movies Recommends");
   return (
     <ContainerRecommends>
       <h1>Recommends For You</h1>
@@ -17,7 +15,7 @@ function Recommends() {
           movies.map((ele, key) => (
             <Wrap key={key}>
               <Link to={`/detail/${ele.id}`}>
-                <img src={`${ele.cardImg}`} alt={`${ele.title}`} />
+                <Img src={`${ele.cardImg}`} alt={`${ele.title}`} />
               </Link>
             </Wrap>
           ))}
@@ -67,5 +65,11 @@ const Wrap = styled.div`
     transform: scale(1.05);
     border-color: rgba(249, 249, 249, 0.8);
   }
+`;
+
+const Img = styled.img`
+  object-fit: cover;
+  width: 100%;
+  height: auto;
 `;
 export default Recommends;

@@ -48,7 +48,7 @@ function Home() {
           setMovies({
             recommends: recommends,
             newDisney: newDisney,
-            original: originals,
+            originals: originals,
             trending: trending,
           })
         );

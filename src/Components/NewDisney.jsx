@@ -1,44 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { selectNewDisney } from "../features/movie/movieSlice.js";
 
 function NewDisney() {
+  const movies = useSelector(selectNewDisney);
+  console.log(movies, "movies selectNewDisney");
   return (
     <ContainerRecommends>
       <h1>New Disney For You</h1>
       <Content>
-        <Wrap>
-          <Link to={"/"}>
-            <img
-              src="https://www.tripsavvy.com/thmb/qV2Ii60OXopoJV1YrVM6MH7ks5Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Disneygang-57bbb6295f9b58cdfdb108ab.jpg"
-              alt=""
-            />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to={"/"}>
-            <img
-              src="https://www.tripsavvy.com/thmb/qV2Ii60OXopoJV1YrVM6MH7ks5Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Disneygang-57bbb6295f9b58cdfdb108ab.jpg"
-              alt=""
-            />
-          </Link>
-        </Wrap>{" "}
-        <Wrap>
-          <Link to={"/"}>
-            <img
-              src="https://www.tripsavvy.com/thmb/qV2Ii60OXopoJV1YrVM6MH7ks5Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Disneygang-57bbb6295f9b58cdfdb108ab.jpg"
-              alt=""
-            />
-          </Link>
-        </Wrap>{" "}
-        <Wrap>
-          <Link to={"/"}>
-            <img
-              src="https://www.tripsavvy.com/thmb/qV2Ii60OXopoJV1YrVM6MH7ks5Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Disneygang-57bbb6295f9b58cdfdb108ab.jpg"
-              alt=""
-            />
-          </Link>
-        </Wrap>
+        {movies &&
+          movies.map((ele, key) => (
+            <Wrap key={key}>
+              <Link to={`/detail/${ele.id}`}>
+                <Img src={`${ele.cardImg}`} alt={`${ele.title}`} />
+              </Link>
+            </Wrap>
+          ))}
       </Content>
     </ContainerRecommends>
   );
@@ -85,5 +65,10 @@ const Wrap = styled.div`
     transform: scale(1.05);
     border-color: rgba(249, 249, 249, 0.8);
   }
+`;
+const Img = styled.img`
+  object-fit: cover;
+  width: 100%;
+  height: auto;
 `;
 export default NewDisney;
