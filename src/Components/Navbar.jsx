@@ -50,9 +50,9 @@ export default function Navbar() {
       console.log(error);
     }
   };
-  // const LogOut = () => {
-  //   // setBtn(true);
-  // };
+  const LogOut = () => {
+    // setBtn(true);
+  };
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       // navigate("/home");

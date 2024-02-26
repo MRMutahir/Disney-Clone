@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSignOutState } from "../features/User/UserSlice";
 
-function NavMenu({ photo, LogOut }) {
+function NavMenu({ photo }) {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   // let token =
 
@@ -15,14 +15,14 @@ function NavMenu({ photo, LogOut }) {
   const auth = getAuth();
   const setUserLogOut = () => {
     dispatch(setSignOutState());
-    LogOut();
+    // LogOut();
   };
   const ButtonLogOutHandel = () => {
     signOut(auth) // Assuming 'auth' is the Firebase authentication object
       .then(() => {
         // Successful sign-out
-        localStorage.removeItem("accessToken");
         setUserLogOut();
+        localStorage.removeItem("accessToken");
         navigate("/");
         console.log("Sign-out successfull");
       })
