@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import styled from "styled-components";
 import NavMenu from "./NavMenu";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,19 +12,20 @@ import {
 } from "../features/User/UserSlice.js";
 
 export default function Navbar() {
+  let token = localStorage.getItem("accessToken");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation(); // Access current location using useLocation hook
   const currentUrl = location.pathname; // Get the pathname from the location object
-  // console.log(currentUrl, ">>>>>>>>>>>>>currentUrl"); // Log the current URL
+  console.log(currentUrl, ">>>>>>>>>>>>>currentUrl"); // Log the current URL
 
   const userPhoto = useSelector(selectUserPhoto);
 
-  const [Btn, setBtn] = useState(true);
+  // const [Btn, setBtn] = useState(true);
 
   const setUserData = useCallback(
     (user) => {
-      user && setBtn(false);
       dispatch(
         setUserLoginDetails({
           name: user.displayName,
@@ -32,6 +33,7 @@ export default function Navbar() {
           photo: user.photoURL,
         })
       );
+      // user && setBtn(false);
     },
     [dispatch]
   );
@@ -42,27 +44,21 @@ export default function Navbar() {
       // console.log(result);
       if (result) {
         localStorage.setItem("accessToken", result.user.accessToken);
+        navigate("/home");
       }
     } catch (error) {
       console.log(error);
     }
   };
-
-  const LogOut = () => {
-    setBtn(true);
-  };
-
+  // const LogOut = () => {
+  //   // setBtn(true);
+  // };
   useEffect(() => {
-    let token = localStorage.getItem("accessToken");
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
-      if (token) {
-        setUserData(user);
-        navigate("/home");
-      } else if (user) {
-        // navigate("/detail/:id/");
-      } else {
-        navigate("/");
-      }
+      // navigate("/home");
+      // if (currentUrl === "/detail/:id") {
+      //   navigate(`/${currentUrl}`);
+      // }
     });
 
     return () => unsubscribe();
@@ -73,10 +69,10 @@ export default function Navbar() {
       <Logo>
         <img src="\images\Disney_Plus_logo.svg.png" alt="DISNEY" />
       </Logo>
-      {Btn ? (
-        <SignBtn onClick={googleHandel}>Login</SignBtn>
+      {token ? (
+        <NavMenu photo={userPhoto} />
       ) : (
-        <NavMenu photo={userPhoto} LogOut={LogOut} />
+        <SignBtn onClick={googleHandel}>Login</SignBtn>
       )}
     </Nav>
   );

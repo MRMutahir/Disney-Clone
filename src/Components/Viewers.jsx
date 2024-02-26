@@ -5,37 +5,37 @@ function Viewers() {
   return (
     <Container>
       <Wrap>
-        <img src="\images\viewers-disney.png" />
+        <img src="/images/viewers-disney.png" alt="Disney" />
         <video autoPlay={true} loop={true} playsInline={true}>
-          <source src="\videos\1564674844-disney.mp4" type="video/mp4" />
+          <source src="/videos/1564674844-disney.mp4" type="video/mp4" />
         </video>
       </Wrap>
       <Wrap>
         <video autoPlay={true} loop={true} playsInline={true}>
-          <source src="\videos\1564676115-marvel.mp4" type="video/mp4" />
+          <source src="/videos/1564676115-marvel.mp4" type="video/mp4" />
         </video>
-        <img src="\images\viewers-marvel.png" />
+        <img src="/images/viewers-marvel.png" alt="Marvel" />
       </Wrap>
       <Wrap>
         <video autoPlay={true} loop={true} playsInline={true}>
           <source
-            src="\videos\1564676296-national-geographic.mp4"
+            src="/videos/1564676296-national-geographic.mp4"
             type="video/mp4"
           />
         </video>
-        <img src="\images\viewers-national.png" />
+        <img src="/images/viewers-national.png" alt="National Geographic" />
       </Wrap>
       <Wrap>
         <video autoPlay={true} loop={true} playsInline={true}>
-          <source src="\videos\1564676714-pixar.mp4" type="video/mp4" />
+          <source src="/videos/1564676714-pixar.mp4" type="video/mp4" />
         </video>
-        <img src="\images\viewers-pixar.png" />
+        <img src="/images/viewers-pixar.png" alt="Pixar" />
       </Wrap>
       <Wrap>
         <video autoPlay={true} loop={true} playsInline={true}>
-          <source src="\videos\1608229455-star-wars.mp4" type="video/mp4" />
+          <source src="/videos/1608229455-star-wars.mp4" type="video/mp4" />
         </video>
-        <img src="\images\viewers-starwars.png" />
+        <img src="/images/viewers-starwars.png" alt="Star Wars" />
       </Wrap>
     </Container>
   );
@@ -62,7 +62,7 @@ const Wrap = styled.div`
   position: relative;
   transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
   border: 3px solid rgba(249, 249, 249, 0.1);
-  /* position: relative; */
+
   img {
     height: 100%;
     inset: 0px;
@@ -74,7 +74,6 @@ const Wrap = styled.div`
     z-index: 1;
     top: 0;
     opacity: 1;
-    /* transition: 0.3s, transform 0.3s; */
   }
   video {
     height: 100%;

@@ -7,6 +7,8 @@ import { setSignOutState } from "../features/User/UserSlice";
 
 function NavMenu({ photo, LogOut }) {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  // let token =
+
   // console.log(signOut, ">>>>>>>>>>>>>>>>>signOut");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -19,9 +21,10 @@ function NavMenu({ photo, LogOut }) {
     signOut(auth) // Assuming 'auth' is the Firebase authentication object
       .then(() => {
         // Successful sign-out
+        localStorage.removeItem("accessToken");
         setUserLogOut();
         navigate("/");
-        console.log("Sign-out successful");
+        console.log("Sign-out successfull");
       })
       .catch((error) => {
         // Handle the sign-out error
